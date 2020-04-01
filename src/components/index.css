@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto:wght@900&display=swap');
 
+/* ROOT */
+:root {
+  --color-black: #171717;
+  --color-orange: #F53E26;
+  --color-hero-bg: #EBDCBB;
+  --color-bg: #F2F0ED;
+}
+
 html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -31,10 +39,19 @@ p {
 
 a {
   text-decoration: none;
-  color: #F53E26;
+  color: var(--color-orange);
 }
 a:hover {
-  color: #171717;
+  color: var(--color-black);
+}
+
+img {
+  user-drag: none; 
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .container {
@@ -53,4 +70,3 @@ a:hover {
     font-size: 6rem;
   }
 }
-

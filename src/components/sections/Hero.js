@@ -1,10 +1,59 @@
 import React from "react";
 import styled from "styled-components";
-import {graphql} from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
+import Img from "gatsby-image";
+
+import sloganSVG from "../images/slogan.svg";
+
+const AvatarContainer = styled.div`
+  width: 601px;
+  position: absolute;
+  right: 0;
+  top: 10vh;
+  h1 {
+    display: inline-block;
+    width: auto;
+    position: absolute;
+    bottom: -1.4rem;
+    left: 10%;
+  }
+  z-index: 1;
+`;
+
+const Avatar = styled(Img)`
+  -webkit-filter: grayscale(100%) contrast(120%) brightness(110%);
+`;
+
+const Circle = styled.div`
+  width: 8rem;
+  height: 8rem;
+  border-radius: 8rem;
+  background: var(--color-orange);
+  position: absolute;
+  top: 210px;
+  right: 140px;
+  z-index: -1;
+`;
+
+const Slogan = styled.img`
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+  width: 6rem;
+  animation: rotate 20s linear infinite;
+  @keyframes rotate {
+    from {
+      -webkit-transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(360deg)
+    }
+  }
+`;
 
 const HeroSection = styled.div`
   min-height: 100vh;
-  background: #EBDCBB;
+  background: var(--color-hero-bg);
   .container {
     display: flex;
     align-items: center;
@@ -13,9 +62,14 @@ const HeroSection = styled.div`
 
 const BigTitle = styled.h1`
   font-size: 10rem;
-  -webkit-text-stroke: ${props => props.outline ? "2px #171717" : null};
-  color: ${props => props.outline ? "transparent" : "#171717"};
+  -webkit-text-stroke: ${props => props.outline ? "2px var(--color-black)" : null};
+  color: ${props => props.outline ? "transparent" : "var(--color-black)"};
   line-height: 1em;
+`;
+
+const MediumTitle = styled.h1`
+  font-size: 6rem;
+  color: var(--color-orange);
 `;
 
 const ScrollDown = styled.div`
@@ -33,7 +87,7 @@ const ScrollDown = styled.div`
     margin-left: calc(50% - 1px);
     width: 2px;
     height: 40px;
-    background: #171717;
+    background: var(--color-black);
     animation: pulse 2s infinite;
   }
   @keyframes pulse {
@@ -58,14 +112,43 @@ const ScrollDown = styled.div`
 `
 
 function Hero() {
+  const data = useStaticQuery(graphql`
+    {
+      allMarkdownRemark {
+        edges {
+          node {
+            frontmatter {
+              firstName
+              lastName
+              avatar {
+                childImageSharp {
+                  fluid(maxWidth: 1201) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+  const { avatar, slogan, firstName, lastName } = data.allMarkdownRemark.edges[0].node.frontmatter;
+
   return (
     <HeroSection>
       <div className="container" style={{minHeight: "100vh"}}>
+        <AvatarContainer>
+          <Avatar fluid={avatar.childImageSharp.fluid} alt="Casper De Bock"/>
+          <MediumTitle>This is me</MediumTitle>
+          <Circle/>
+        </AvatarContainer>
         <BigTitle>
-          <span style={{WebkitTextStroke: "2px #171717", color: "transparent", display: "block"}}>Casper</span> De Bock
+          <span style={{WebkitTextStroke: "2px #171717", color: "transparent", display: "block"}}>{firstName}</span> {lastName}
         </BigTitle>
         <ScrollDown>Scroll Down <div className="scroll"></div></ScrollDown>
       </div>
+      <Slogan src={sloganSVG} alt="I make beats & I love it"/>
     </HeroSection>
   );
 }

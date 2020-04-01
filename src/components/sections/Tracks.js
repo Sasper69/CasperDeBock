@@ -2,10 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 import Track from "../Track";
+import soundfile from "../test.mp3";
 
 const TracksSection = styled.div`
-  background: #F2F0ED;
-  padding: 10rem 0;
+  background: var(--color-bg);
+  padding: 16rem 0;
   p {
     width: 50%;
   }
@@ -26,8 +27,10 @@ function Tracks() {
     <TracksSection>
       <div className="container">
         <p>I’m Casper De Bock, a 16 year old beat producer. I’m eager to learn new techniques and enhance my capabilities. All tips and tricks are welcome @ <a href="#">Twitter</a>, <a href="#">Soundcloud</a>, <a href="#">Instagram</a>.</p>
+
+        <Track id="track-1" track={soundfile} key="1"/>
+        <Track id="track-1" track={soundfile} key="2"/>
       </div>
-      <Track/>
     </TracksSection>
   );
 }

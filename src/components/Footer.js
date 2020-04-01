@@ -2,16 +2,16 @@ import React from "react";
 import styled from "styled-components";
 
 const FooterComponent = styled.div`
-  background: #EBDCBB;
+  background: var(--color-hero-bg);
   width: 100%;
   text-align: center;
   letter-spacing: .2em;
   padding: 3rem 0;
   a {
-    color: #171717;
+    color: var(--color-black);
   }
   a:hover {
-    color: #F53E26;
+    color: var(--color-orange);
   }
 `;
 
