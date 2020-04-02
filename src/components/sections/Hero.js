@@ -3,7 +3,39 @@ import styled from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
 
-import sloganSVG from "../images/slogan.svg";
+import sloganSVG from "../../images/slogan.svg";
+import spikesSVG from "../../images/spikes.svg";
+
+const HeroSection = styled.div`
+  min-height: 100vh;
+  background: var(--color-hero-bg);
+  .container {
+    display: flex;
+    align-items: center;
+  }
+  &::before {
+    content: '';
+    background: url(${spikesSVG});
+    height: 10px;
+    width: 100%;
+    position: absolute;
+    background-repeat: repeat-x;
+    animation: roll-in 1s ease;
+  }
+
+  @keyframes roll-in {
+    from {
+      top: -10px;
+      width: 0;
+      opacity: 0;
+    }
+    to {
+      top: 0;
+      width: 100%;
+      opacity: 1;
+    }
+  }
+`;
 
 const AvatarContainer = styled.div`
   width: 601px;
@@ -48,15 +80,6 @@ const Slogan = styled.img`
     to {
       -webkit-transform: rotate(360deg)
     }
-  }
-`;
-
-const HeroSection = styled.div`
-  min-height: 100vh;
-  background: var(--color-hero-bg);
-  .container {
-    display: flex;
-    align-items: center;
   }
 `;
 
@@ -133,7 +156,7 @@ function Hero() {
       }
     }
   `);
-  const { avatar, slogan, firstName, lastName } = data.allMarkdownRemark.edges[0].node.frontmatter;
+  const { avatar, firstName, lastName } = data.allMarkdownRemark.edges[0].node.frontmatter;
 
   return (
     <HeroSection>

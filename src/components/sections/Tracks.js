@@ -1,35 +1,49 @@
 import React from "react";
 import styled from "styled-components";
+import {useStaticQuery, graphql} from "gatsby";
 
 import Track from "../Track";
-import soundfile from "../test.mp3";
 
 const TracksSection = styled.div`
   background: var(--color-bg);
-  padding: 16rem 0;
-  p {
-    width: 50%;
-  }
-  @media (max-width: 1199.98px) { 
-    p {width: 80%;}
-  }
-  @media (max-width: 767.98px) { 
-    p {width: 100%;}
-  }
-  a {
-    font-family: 'Merriweather', serif;
-    font-weight: normal;
-  }
+  padding: 6rem 0;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
 `;
 
 function Tracks() {
+  const tracks = useStaticQuery(graphql`
+    query {
+      allMarkdownRemark(filter: {frontmatter: {type: {eq: "track"}}}) {
+        edges {
+          node {
+            frontmatter {
+              src {
+                publicURL
+              }
+              id
+              title
+            }
+          }
+        }
+      }
+    }
+  `);
+
   return (
     <TracksSection>
       <div className="container">
-        <p>I’m Casper De Bock, a 16 year old beat producer. I’m eager to learn new techniques and enhance my capabilities. All tips and tricks are welcome @ <a href="#">Twitter</a>, <a href="#">Soundcloud</a>, <a href="#">Instagram</a>.</p>
-
-        <Track id="track-1" track={soundfile} key="1"/>
-        <Track id="track-1" track={soundfile} key="2"/>
+        {tracks.allMarkdownRemark.edges.map((track, index) => {
+          return (
+            <Track 
+              id={track.node.frontmatter.id} 
+              title={track.node.frontmatter.title}
+              track={track.node.frontmatter.src.publicURL}
+              key={index}
+            />
+            );
+        })}
       </div>
     </TracksSection>
   );
