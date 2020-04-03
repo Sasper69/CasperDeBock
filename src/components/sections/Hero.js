@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
+import Transition from "../Transition";
 
 import sloganSVG from "../../images/slogan.svg";
 import spikesSVG from "../../images/spikes.svg";
@@ -73,6 +74,7 @@ const AvatarContainer = styled.div`
 
 const Avatar = styled(Img)`
   -webkit-filter: grayscale(100%) contrast(120%) brightness(110%);
+  z-index: 99;
 `;
 
 const Circle = styled.div`
@@ -214,12 +216,19 @@ function Hero() {
     <HeroSection>
       <div className="container" style={{minHeight: "100vh"}}>
         <BigTitle>
-          <span style={{WebkitTextStroke: "2px #171717", color: "transparent", display: "block"}}>{firstName}</span> {lastName}
+          <Transition start type="fade-in-up" timeout={200}>
+            <span style={{WebkitTextStroke: "2px #171717", color: "transparent", display: "block"}}>{firstName}</span>
+          </Transition>
+          <Transition start type="fade-in-up" timeout={500}>
+            {lastName}
+          </Transition>
         </BigTitle>
         <AvatarContainer>
-          <Avatar fluid={avatar.childImageSharp.fluid} alt="Casper De Bock"/>
+          <Avatar fluid={avatar.childImageSharp.fluid} alt="Casper De Bock" />
           <MediumTitle>This is me</MediumTitle>
-          <Circle/>
+          <Transition start type="pop" timeout={500}>
+            <Circle/>
+          </Transition>
         </AvatarContainer>
         <ScrollDown>Scroll Down <div className="scroll"></div></ScrollDown>
       </div>
