@@ -1,4 +1,5 @@
 ---
+title: hero
 firstName: Casper
 lastName: De Bock
 avatar: ./profilePicture.png

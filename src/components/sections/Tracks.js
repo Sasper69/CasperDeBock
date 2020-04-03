@@ -10,6 +10,10 @@ const TracksSection = styled.div`
   position: relative;
   z-index: 1;
   overflow: hidden;
+  
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
 `;
 
 function Tracks() {

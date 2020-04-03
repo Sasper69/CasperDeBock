@@ -3,17 +3,31 @@ import styled from "styled-components";
 
 const TrackContainer = styled.div`
   padding: 4rem 0;
+  
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
 
 const TrackTitle = styled.h1`
   font-size: 6rem;
   color: transparent;
   -webkit-text-stroke: 2px var(--color-black);
+  
+  @media (max-width: 768px) {
+    font-size: 4rem;
+    letter-spacing: .05em;
+    padding-bottom: 1rem;
+  }
 `;
 
 const MediaPlayer = styled.div`
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
 `;
 
 const PlayButton = styled.button`
@@ -29,12 +43,24 @@ const PlayButton = styled.button`
   &:hover {
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    display: block;
+    margin: 0 auto 1rem auto;
+  }
 `;
 
 const Timeline = styled.div`
   width: 50%;
   height: .75rem;
   background: white;
+  
+  @media (max-width: 1200px) {
+    width: 100%;
+  }
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const Playhead = styled.div`
@@ -45,6 +71,10 @@ const Playhead = styled.div`
 const Timestamp = styled.span`
   padding: 0 1.5rem;
   letter-spacing: .1em;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 `;
 
 function Track(props) {

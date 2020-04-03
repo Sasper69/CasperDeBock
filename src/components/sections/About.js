@@ -8,10 +8,11 @@ const AboutSection = styled.div`
   p {
     width: 50%;
   }
-  @media (max-width: 1199.98px) { 
+  @media (max-width: 1200px) { 
     p {width: 80%;}
+    padding-top: 8rem;
   }
-  @media (max-width: 767.98px) { 
+  @media (max-width: 768px) { 
     p {width: 100%;}
   }
   a {

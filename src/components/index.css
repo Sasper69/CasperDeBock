@@ -6,6 +6,10 @@
   --color-orange: #F53E26;
   --color-hero-bg: #EBDCBB;
   --color-bg: #F2F0ED;
+  --max-lg: 1200px;
+  --max-md: 992px;
+  --max-sm: 768px;
+  --max-xs: 576px;
 }
 
 html, body {
@@ -61,12 +65,20 @@ img {
   position: relative;
 }
 
-@media (max-width: 991.98px) { 
+@media (max-width: 1700px) { 
+  .container {
+    width: 80%;
+  }
+}
+@media (max-width: 1500px) { 
+  .container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 1200px) { 
   .container {
     width: 100%;
     padding: 0 1rem;
-  }
-  .container h1 {
-    font-size: 6rem;
   }
 }

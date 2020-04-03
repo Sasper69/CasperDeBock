@@ -23,6 +23,16 @@ const HeroSection = styled.div`
     animation: roll-in 1s ease;
   }
 
+  @media (max-width: 1200px) { 
+    overflow: hidden;
+  }
+  @media (max-width: 992px) { 
+    height: 100vh;
+    .container {
+      display: block;
+    }
+  }
+
   @keyframes roll-in {
     from {
       top: -10px;
@@ -50,6 +60,15 @@ const AvatarContainer = styled.div`
     left: 10%;
   }
   z-index: 1;
+
+  @media (max-width: 992px) { 
+    position: relative;
+    width: 120%;
+    top: 0;
+    right: auto;
+    margin-left: -10%;
+    h1 {display: none;}
+  }
 `;
 
 const Avatar = styled(Img)`
@@ -65,6 +84,11 @@ const Circle = styled.div`
   top: 210px;
   right: 140px;
   z-index: -1;
+
+  @media (max-width: 992px) { 
+    top: 20%;
+    right: 20%;
+  }
 `;
 
 const Slogan = styled.img`
@@ -73,6 +97,15 @@ const Slogan = styled.img`
   left: 5%;
   width: 6rem;
   animation: rotate 20s linear infinite;
+
+  @media (max-width: 1500px) { 
+    left: -1em;
+  }
+  @media (max-width: 992px) { 
+    top: 40%;
+    left: -3rem;
+  }
+
   @keyframes rotate {
     from {
       -webkit-transform: rotate(0deg);
@@ -88,6 +121,16 @@ const BigTitle = styled.h1`
   -webkit-text-stroke: ${props => props.outline ? "2px var(--color-black)" : null};
   color: ${props => props.outline ? "transparent" : "var(--color-black)"};
   line-height: 1em;
+
+  @media (max-width: 1200px) { 
+    font-size: 8rem;
+  }
+  @media (max-width: 992px) { 
+    font-size: 20vw;
+    text-align: center;
+    display: block;
+    padding: 4rem 0;
+  }
 `;
 
 const MediumTitle = styled.h1`
@@ -113,6 +156,11 @@ const ScrollDown = styled.div`
     background: var(--color-black);
     animation: pulse 2s infinite;
   }
+
+  @media (max-width: 992px) { 
+    display: none;
+  }
+
   @keyframes pulse {
     0% {
       height: 0;
@@ -137,7 +185,7 @@ const ScrollDown = styled.div`
 function Hero() {
   const data = useStaticQuery(graphql`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(filter: {frontmatter: {title: {eq: "hero"}}}) {
         edges {
           node {
             frontmatter {
@@ -146,7 +194,11 @@ function Hero() {
               avatar {
                 childImageSharp {
                   fluid(maxWidth: 1201) {
-                    ...GatsbyImageSharpFluid
+                    src
+                    srcSet
+                    aspectRatio
+                    base64
+                    sizes
                   }
                 }
               }
@@ -161,14 +213,14 @@ function Hero() {
   return (
     <HeroSection>
       <div className="container" style={{minHeight: "100vh"}}>
+        <BigTitle>
+          <span style={{WebkitTextStroke: "2px #171717", color: "transparent", display: "block"}}>{firstName}</span> {lastName}
+        </BigTitle>
         <AvatarContainer>
           <Avatar fluid={avatar.childImageSharp.fluid} alt="Casper De Bock"/>
           <MediumTitle>This is me</MediumTitle>
           <Circle/>
         </AvatarContainer>
-        <BigTitle>
-          <span style={{WebkitTextStroke: "2px #171717", color: "transparent", display: "block"}}>{firstName}</span> {lastName}
-        </BigTitle>
         <ScrollDown>Scroll Down <div className="scroll"></div></ScrollDown>
       </div>
       <Slogan src={sloganSVG} alt="I make beats & I love it"/>
