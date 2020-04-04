@@ -6,6 +6,9 @@
 <h1 align="center">
   Casper De Bock's Portfolio Site
 </h1>
+<p align="center">
+A portfolio <a href="https://www.casper.ga">website</a> for Casper De Bock built with love using <a href="https://www.gatsbyjs.org/">Gatsby</a>.
+</p>
 
 A portfolio [website](https://www.casper.ga) for Casper De Bock built with love using [Gatsby](https://www.gatsbyjs.org/).
 
@@ -39,11 +42,11 @@ A friend of mine started playing around in FL Studio at the beginning of 2020. S
 ## 🎓 Experience
 In preparation of building another iteration of my own portfolio site I decided to learn Gatsby. Gatsby is a React framework that's used to create static web pages. It offers every handy React depency out of the box; there's no need to configure pages, routes or metadata. Another benefit Gatsby has to offer is its performance. Gatsby automates code splitting, image optimization, lazy loading, and so much more.
 
-What I learned in this project:
+**What I learned in this project:**
 * Create custom media players
 * Convert Markdown files to html using GraphQL and Gatsby's markdown-remark plugin
 * Page transitions and animations
 * Using styled-components to style elements
 
 ## ❓ Forking this repo
-You're free to fork and re-use this repository for personal projects. Please be aware that a lot of time and effort has been put into this project. Plagiarism remains a punishable fact.
+You're free to fork and re-use this repository for personal projects. Please be aware that a lot of time and effort has been put into this project. **Plagiarism is not allowed**.
