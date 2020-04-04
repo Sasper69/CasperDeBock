@@ -10,8 +10,6 @@
 A portfolio <a href="https://www.casper.ga">website</a> for Casper De Bock built with love using <a href="https://www.gatsbyjs.org/">Gatsby</a>.
 </p>
 
-A portfolio [website](https://www.casper.ga) for Casper De Bock built with love using [Gatsby](https://www.gatsbyjs.org/).
-
 ![Preview](https://github.com/GillesDP/CasperDeBock/blob/master/src/images/preview.png)
 
 ## 🔌 Setup & Build
