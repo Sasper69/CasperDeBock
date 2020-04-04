@@ -5,13 +5,14 @@ import "../animations/pop.css";
 
 function Transition(props) {
   React.useEffect(() => {
+    const delay = props.timeout ? props.timeout : 0;
     const timer = setTimeout(() => {
       if (props.start) {
         setStartAnimation(true);
       } else {
         setStartAnimation(false);
       }
-    }, props.timeout);
+    }, delay);
     return () => clearTimeout(timer);
   }, []);
 

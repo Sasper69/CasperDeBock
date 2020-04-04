@@ -59,6 +59,7 @@ const AvatarContainer = styled.div`
     position: absolute;
     bottom: -1.4rem;
     left: 10%;
+    z-index: 3;
   }
   z-index: 1;
 
@@ -74,7 +75,7 @@ const AvatarContainer = styled.div`
 
 const Avatar = styled(Img)`
   -webkit-filter: grayscale(100%) contrast(120%) brightness(110%);
-  z-index: 99;
+  z-index: 2;
 `;
 
 const Circle = styled.div`
@@ -150,6 +151,7 @@ const ScrollDown = styled.div`
   line-height: 1rem;
   min-height: calc(1.5rem + 40px);
   letter-spacing: .2em;
+  color: var(--color-black);
   .scroll {
     margin-top: .5rem;
     margin-left: calc(50% - 1px);
@@ -211,6 +213,7 @@ function Hero() {
     }
   `);
   const { avatar, firstName, lastName } = data.allMarkdownRemark.edges[0].node.frontmatter;
+  const [avatarLoaded, setAvatarLoaded] = React.useState(false);
 
   return (
     <HeroSection>
@@ -224,9 +227,9 @@ function Hero() {
           </Transition>
         </BigTitle>
         <AvatarContainer>
-          <Avatar fluid={avatar.childImageSharp.fluid} alt="Casper De Bock" />
+          <Avatar fluid={avatar.childImageSharp.fluid} alt="Casper De Bock" fadeIn={false} onLoad={() => setAvatarLoaded(true)} className={avatarLoaded ? "anim--fade-in-up" : ""}/>
           <MediumTitle>This is me</MediumTitle>
-          <Transition start type="pop" timeout={500}>
+          <Transition start type="pop" timeout={1000}>
             <Circle/>
           </Transition>
         </AvatarContainer>
