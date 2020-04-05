@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: "/CasperDeBock",
   siteMetadata: {
     title: `Casper De Bock`,
     description: ` Casper De Bock is a 16 year old beat producer, eager to learn new techniques and enhance his capabilities.`,
@@ -6,6 +7,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -25,7 +27,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/slogan.svg`, // This path is relative to the root of the site.
+        icon: `src/images/logo.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
