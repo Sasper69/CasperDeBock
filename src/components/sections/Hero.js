@@ -227,7 +227,7 @@ function Hero() {
           </Transition>
         </BigTitle>
         <AvatarContainer>
-          <Avatar fluid={avatar.childImageSharp.fluid} alt="Casper De Bock" fadeIn={false} onLoad={() => setAvatarLoaded(true)} className={avatarLoaded ? "anim--fade-in-up" : ""}/>
+          <Avatar fluid={avatar.childImageSharp.fluid} alt="Casper De Bock" fadeIn={false} onLoad={() => setAvatarLoaded(true)} className={avatarLoaded ? "anim--fade-in-up" : ""} style={avatarLoaded ? {} : {opacity: "0"}}/>
           <MediumTitle>This is me</MediumTitle>
           <Transition start type="pop" timeout={1000}>
             <Circle/>
