@@ -86,12 +86,25 @@ function Track(props) {
   });
 
   function play(e) {
-    if (!playing) {
-      e.target.parentNode.parentNode.children[1].play();
-      setPlaying(true);
-    } else if (playing) {
-      e.target.parentNode.parentNode.children[1].pause();
-      setPlaying(false);
+    let currentAudioElem = e.target.parentNode.parentNode.children[1];
+    let playButton = e.target;
+    let audios = document.getElementsByTagName("audio");
+    for (let audio of audios) {
+      if (audio.id === currentAudioElem.id) continue;
+      let playButton = audio.parentNode.children[2].children[0];
+      playButton.style.background = "var(--color-orange)";
+      playButton.innerHTML = "play";
+      audio.pause();
+    }
+
+    if (currentAudioElem.paused) {
+      currentAudioElem.play();
+      playButton.style.background = "var(--color-black)";
+      playButton.innerHTML = "stop";
+    } else if (!currentAudioElem.paused) {
+      currentAudioElem.pause();
+      playButton.style.background = "var(--color-orange)";
+      playButton.innerHTML = "play";
     }
   }
 
@@ -137,9 +150,9 @@ function Track(props) {
   return (
     <TrackContainer>
       <TrackTitle>{props.title}</TrackTitle>
-      <audio preload="auto" src={props.track} id={props.id} onTimeUpdate={updateTimeline} onLoadedData={displayDuration}></audio>
+      <audio preload="auto" id={props.id} src={props.track} onTimeUpdate={updateTimeline} onLoadedData={displayDuration}></audio>
       <MediaPlayer>
-        <PlayButton onClick={play} style={{background: playing ? "var(--color-black)" : "var(--color-orange)"}}>{playing ? "stop" : "play"}</PlayButton>
+        <PlayButton onClick={play}>play</PlayButton>
         <Timestamp>{time.current}/{time.total}</Timestamp>
         <Timeline onClick={handleClick}>
           <Playhead style={{width: `${progress}%`}}/>
