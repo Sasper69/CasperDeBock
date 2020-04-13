@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://www.casper.ga">
+  <a href="https://gillesdp.github.io/CasperDeBock/">
     <img alt="Casper De Bock" src="https://github.com/GillesDP/CasperDeBock/blob/master/src/images/logo.png" width="80" />
   </a>
 </p>
@@ -7,7 +7,7 @@
   Casper De Bock's Portfolio Site
 </h1>
 <p align="center">
-A portfolio <a href="https://www.casper.ga">website</a> for Casper De Bock built with love using <a href="https://www.gatsbyjs.org/">Gatsby</a>.
+A portfolio <a href="https://gillesdp.github.io/CasperDeBock/">website</a> for Casper De Bock built with love using <a href="https://www.gatsbyjs.org/">Gatsby</a>.
 </p>
 
 ![Preview](https://github.com/GillesDP/CasperDeBock/blob/master/src/images/preview.png)
