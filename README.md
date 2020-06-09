@@ -20,7 +20,8 @@ A portfolio <a href="https://gillesdp.github.io/CasperDeBock/">website</a> for C
 
 1.  **Install dependencies**
     ```shell
-    npm
+    npm install --save gatsby-plugin-styled-components styled-components babel-plugin-styled-components
+    npm install --save gatsby-source-filesystem gatsby-transformer-remark
     ```
 
 1.  **Start development**
